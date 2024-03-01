@@ -5,7 +5,6 @@ from yaspin import yaspin #to add progress indicators (example: spinners)
 import typer #to create command-line applications in an easier way
 
 home_point = {"x":0, "y":0, "z":0,"r":0}  #Home point of the robot arm
-
 app = typer.Typer()
 spinner = yaspin(text="Em andamento...", color="blue") # Mostra um indicador de carregamento
 available_ports = list_ports.comports() # Lista as portas disponíveis
@@ -23,10 +22,10 @@ class Robot:
 
     def turn_off(self):
         robot.suck(False)
-    
+
     def home(self):
         spinner.start()
-        robot.move_to(home_point["x","y","z","r"], wait=False)
+        robot.move_to(home_point["x"], home_point["y"], home_point["z"], home_point["r"])  # Movendo para o ponto inicial
         spinner.stop()
 
     def current(self):
